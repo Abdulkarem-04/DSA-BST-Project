@@ -221,6 +221,23 @@ public class EdgeCaseTest {
         System.out.println("  • Post-order: " + singleForTraversal.postOrderTraversal().get(0).getMatricNumber() + " ✓");
         System.out.println("  • Level-order: " + singleForTraversal.levelOrderTraversal().get(0).getMatricNumber() + " ✓");
 
+        System.out.println("\n=== Linear Search (CGPA >= 3.50) ===");
+
+        // You need a BST instance first! Add this at the beginning of the test or before the linear search
+        BST mainBST = new BST();
+        for (StudentRecord record : records) {
+            mainBST.insert(record);  // Add all records to tree
+        }
+
+// Then call the instance method on that tree
+        System.out.println("\n=== Linear Search (CGPA >= 3.50) ===");
+        List<StudentRecord> filtered = mainBST.linearSearchByCGPA(3.50);
+        for (StudentRecord record : filtered) {
+            System.out.println(record.getMatricNumber() + " (" +
+                    record.getName() + ", " + record.getCgpa() + ")");
+        }
+
+
         // ========== FINAL SUMMARY ==========
         System.out.println("\n" + "=".repeat(80));
         System.out.println("✅ EDGE CASE TEST COMPLETE");

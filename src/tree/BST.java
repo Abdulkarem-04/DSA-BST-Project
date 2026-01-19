@@ -1191,6 +1191,21 @@ public class BST {
         return countNodes() - getLeafCount();
     }
 
+    public List<StudentRecord> linearSearchByCGPA(double minCGPA) {
+        List<StudentRecord> results = new ArrayList<>();
+        linearSearchHelper(root, minCGPA, results);
+        return results;
+    }
+
+    private void linearSearchHelper(Node node, double minCGPA,
+                                    List<StudentRecord> results) {
+        if (node == null) return;
+        linearSearchHelper(node.getLeft(), minCGPA, results);
+        if (node.getData().getCgpa() >= minCGPA) {
+            results.add(node.getData());
+        }
+        linearSearchHelper(node.getRight(), minCGPA, results);
+    }
 
 
 }
